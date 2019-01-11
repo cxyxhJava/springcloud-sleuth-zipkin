@@ -1,0 +1,17 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: elasticsearch-demo
+  data:
+    ##es参数
+    elasticsearch:
+      #api 模式下端口为9300
+      cluster-nodes: es:9300
+      cluster-name: docker-cluster
+
+
+
+
+
+

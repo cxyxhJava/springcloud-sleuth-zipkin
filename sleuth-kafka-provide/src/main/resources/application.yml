@@ -1,0 +1,30 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: sleuth-kafka-provide
+  #链路追踪配置
+  sleuth:
+    sampler:
+      probability: 1.0 #将采样比例1.0是全部都采集，默认是0.1
+  zipkin:
+    sender:
+      type: kafka
+    service:
+      name: ${spring.application.name} #zipkin里看到的的service name
+  kafka:
+    bootstrap-servers: kafka:9092
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+  pattern:
+    level: '[%X{X-B3-TraceId}/%X{X-B3-SpanId}] %-5p [%t] %C{2} - %m%n'
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:8761/eureka
+
+
